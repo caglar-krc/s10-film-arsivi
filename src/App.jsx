@@ -1,15 +1,13 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
-
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
-
 import MovieHeader from './components/MovieHeader';
-
 import AddMovieForm from './components/AddMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const App = (props) => {
-  const displayFavorites = true;
+  const displayFavorites = useSelector((state) => state.displayFavorites);
 
   return (
     <div>

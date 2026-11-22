@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { removeFavorite } from "../store/actions";
 
 const FavoriteMovieList = (props) => {
-  const favorites = [];
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch()
 
   return (
     <div className="flex-1 sm:max-w-[250px] p-5 pr-5 bg-white shadow rounded-md">
@@ -17,7 +20,10 @@ const FavoriteMovieList = (props) => {
             >
               {movie.title}
               <span
-                onClick={() => {}}
+                onClick={(e) => {
+                  e.preventDefault()
+                  dispatch(removeFavorite(movie.id))
+                }}
                 className="material-icons hover:text-red-600 text-[18px]"
               >
                 remove_circle
